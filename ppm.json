@@ -1,7 +1,8 @@
 {
  "plugin": false,
  "dependencies": [
-  "Glow-Project/ppm-ui"
+  "Glow-Project/ppm-ui",
+  "Glow-Project/SettingsManager"
  ],
  "sub-dependencies": []
 }

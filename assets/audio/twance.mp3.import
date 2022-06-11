@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/twance.mp3-514becd50d268ff8af73404f75d888f8.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/twance.mp3"
+dest_files=[ "res://.import/twance.mp3-514becd50d268ff8af73404f75d888f8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

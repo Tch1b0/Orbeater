@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://components/hit_zone/HitZone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/hit_zone_wall/HitZoneWall.gd" type="Script" id=2]
+
+[node name="HitZoneWall" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="HitZone1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 325, 75 )
+input_action = "ui_up"
+
+[node name="HitZone2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 325, 226 )
+input_action = "ui_left"
+
+[node name="HitZone3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 325.055, 377 )
+input_action = "ui_right"
+
+[node name="HitZone4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 325.055, 528 )
+input_action = "ui_down"

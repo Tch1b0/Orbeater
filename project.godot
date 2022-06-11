@@ -8,11 +8,55 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "ChordOrb",
+"language": "GDScript",
+"path": "res://components/chord_orb/ChordOrb.gd"
+}, {
+"base": "Node",
+"class": "GameController",
+"language": "GDScript",
+"path": "res://components/game_controller/GameController.gd"
+}, {
+"base": "Node2D",
+"class": "HitZoneWall",
+"language": "GDScript",
+"path": "res://components/hit_zone_wall/HitZoneWall.gd"
+}, {
+"base": "Node2D",
+"class": "Orb",
+"language": "GDScript",
+"path": "res://components/orb/Orb.gd"
+}, {
+"base": "Node",
+"class": "Settings",
+"language": "GDScript",
+"path": "res://addons/SettingsManager/Settings.gd"
+} ]
+_global_script_class_icons={
+"ChordOrb": "",
+"GameController": "",
+"HitZoneWall": "",
+"Orb": "",
+"Settings": ""
+}
+
 [application]
 
 config/name="gwj46"
-run/main_scene="res://scenes/Test.tscn"
+run/main_scene="res://scenes/menu/Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://global/Global.gd"
+settings="*res://global/InitSettings.gd"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 

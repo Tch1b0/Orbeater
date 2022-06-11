@@ -1,0 +1,420 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/special/ConcertOne-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=2]
+[ext_resource path="res://scenes/menu/Menu.gd" type="Script" id=3]
+[ext_resource path="res://components/orb/Orb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/audio/twance.mp3" type="AudioStream" id=5]
+[ext_resource path="res://scenes/menu/settings_menu/SettingsMenu.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 82
+outline_size = 1
+outline_color = Color( 0.890196, 0.0666667, 0.721569, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+extra_spacing_bottom = 15
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Orbs/Orb:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 231, 395 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Orbs/Orb6:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 844, 492 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Orbs/Orb7:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 913, 312 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Orbs/Orb2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 92, 323 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Orbs/Orb3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 70, 513 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Orbs/Orb4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 662, 313 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Orbs/Orb5:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 375, 314 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MainMenu:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Title:rect_size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1018, 122 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath(".:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -10.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.353553, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -10.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "intro"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Orbs/Orb:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -137, 419 ), Vector2( 231, 395 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Orbs/Orb6:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1307, 440 ), Vector2( 844, 492 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Orbs/Orb7:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1340, 259 ), Vector2( 913, 312 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Orbs/Orb2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -155, 299 ), Vector2( 92, 323 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Orbs/Orb3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 7.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -196, 537 ), Vector2( 70, 513 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Orbs/Orb4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 6.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1207, 204 ), Vector2( 662, 313 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Orbs/Orb5:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 8.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -136, 207 ), Vector2( 375, 314 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MainMenu:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 4.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Title:rect_size")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.96828, 5.04908 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1018, 495 ), Vector2( 1018, 495 ), Vector2( 1018, 122 ) ]
+}
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Title" type="Label" parent="."]
+margin_left = -1.0
+margin_top = 48.0
+margin_right = 1017.0
+margin_bottom = 170.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "ORBEATER"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="MainMenu" type="CenterContainer" parent="."]
+margin_top = 275.0
+margin_right = 1022.0
+margin_bottom = 599.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+margin_left = 442.0
+margin_top = 87.0
+margin_right = 580.0
+margin_bottom = 236.0
+
+[node name="PlayButton" type="Button" parent="MainMenu/VBoxContainer"]
+margin_right = 138.0
+margin_bottom = 47.0
+custom_fonts/font = SubResource( 2 )
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="MainMenu/VBoxContainer"]
+margin_top = 51.0
+margin_right = 138.0
+margin_bottom = 98.0
+custom_fonts/font = SubResource( 2 )
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="MainMenu/VBoxContainer"]
+margin_top = 102.0
+margin_right = 138.0
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 2 )
+text = "EXIT"
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="Orbs" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Orb" parent="Orbs" instance=ExtResource( 4 )]
+position = Vector2( 231, 395 )
+scale = Vector2( 0.25, 0.25 )
+color = Color( 0.87451, 0.831373, 0.145098, 1 )
+display_dot = false
+
+[node name="Orb6" parent="Orbs" instance=ExtResource( 4 )]
+position = Vector2( 844, 492 )
+scale = Vector2( 0.25, 0.25 )
+color = Color( 0.0980392, 0.792157, 0.321569, 1 )
+display_dot = false
+
+[node name="Orb7" parent="Orbs" instance=ExtResource( 4 )]
+position = Vector2( 913, 312 )
+scale = Vector2( 0.25, 0.25 )
+color = Color( 0.686275, 0.0901961, 0.752941, 1 )
+display_dot = false
+
+[node name="Orb2" parent="Orbs" instance=ExtResource( 4 )]
+position = Vector2( 92, 323 )
+scale = Vector2( 0.25, 0.25 )
+color = Color( 0.0980392, 0.792157, 0.321569, 1 )
+display_dot = false
+
+[node name="Orb3" parent="Orbs" instance=ExtResource( 4 )]
+position = Vector2( 70, 513 )
+scale = Vector2( 0.25, 0.25 )
+color = Color( 0.686275, 0.0901961, 0.752941, 1 )
+display_dot = false
+
+[node name="Orb4" parent="Orbs" instance=ExtResource( 4 )]
+position = Vector2( 662, 313 )
+scale = Vector2( 0.25, 0.25 )
+color = Color( 0.87451, 0.831373, 0.145098, 1 )
+display_dot = false
+
+[node name="Orb5" parent="Orbs" instance=ExtResource( 4 )]
+position = Vector2( 375, 314 )
+scale = Vector2( 0.25, 0.25 )
+color = Color( 0.686275, 0.0901961, 0.752941, 1 )
+display_dot = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/fade_out = SubResource( 5 )
+anims/intro = SubResource( 3 )
+
+[connection signal="pressed" from="MainMenu/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="back" from="SettingsMenu" to="." method="_on_SettingsMenu_back"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

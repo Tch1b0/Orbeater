@@ -37,8 +37,12 @@ shader_param/thickness = null
 emission_shape = 1
 emission_sphere_radius = 90.0
 flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.1
 orbit_velocity_random = 0.0
+scale = 4.0
+hue_variation = 0.29
+hue_variation_random = 1.0
 
 [node name="Orb" type="Node2D"]
 material = SubResource( 2 )
@@ -49,10 +53,14 @@ texture = ExtResource( 2 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 3 )
 
 [node name="CircleParticles" type="Particles2D" parent="."]
 amount = 100
 process_material = SubResource( 3 )
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_Timer_timeout"]

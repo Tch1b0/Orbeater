@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/audio/avgwave.mp3" type="AudioStream" id=1]
+[ext_resource path="res://components/hit_zone_wall/HitZoneWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/chord_orb/ChordOrb.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/game_controller/GameController.gd" type="Script" id=5]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0104712, 0.230366, 0.240838, 0.434555, 1 )
+colors = PoolColorArray( 0.433594, 0.433594, 0.433594, 1, 0.738281, 0.738281, 0.738281, 1, 0.878906, 0.0205994, 0.0205994, 1, 0.167969, 0.167969, 0.167969, 1, 0.0898438, 0.0898438, 0.0898438, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.989529 )
+colors = PoolColorArray( 0.0195313, 0.0195313, 0.0195313, 1, 0.175781, 0.175781, 0.175781, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[node name="Game" type="Node2D"]
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource( 5 )
+hit_zone_wall_path = NodePath("../HitZoneWall")
+death_zone_path = NodePath("../DeathZone")
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 512.5, 300.25 )
+scale = Vector2( 0.500488, 601.5 )
+texture = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="HitZoneWall" parent="." instance=ExtResource( 3 )]
+
+[node name="Bars" type="Node2D" parent="."]
+
+[node name="Bar" type="Sprite" parent="Bars"]
+position = Vector2( 735.625, 150 )
+scale = Vector2( 0.281616, 12 )
+texture = SubResource( 4 )
+
+[node name="Bar2" type="Sprite" parent="Bars"]
+position = Vector2( 735.625, 301 )
+scale = Vector2( 0.281006, 12 )
+texture = SubResource( 4 )
+
+[node name="Bar3" type="Sprite" parent="Bars"]
+position = Vector2( 735.625, 452 )
+scale = Vector2( 0.281006, 12 )
+texture = SubResource( 4 )
+
+[node name="Chords" type="Node2D" parent="."]
+
+[node name="ChordOrb" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 600, 223 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb2" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 772, 85 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb3" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 920, 383 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb4" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 477, 531 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb5" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 1799, 244 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb6" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 1971, 106 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb7" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 2119, 404 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb8" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 1676, 552 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb9" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 1256, 225 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb10" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 1428, 87 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb11" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 1576, 385 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="ChordOrb12" parent="Chords" instance=ExtResource( 4 )]
+position = Vector2( 1133, 533 )
+scale = Vector2( 0.5, 0.5 )
+color = Color( 0.807843, 0.12549, 0.811765, 1 )
+
+[node name="DeathZone" type="Area2D" parent="."]
+scale = Vector2( 1.463, 35.041 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2( -155.844, 8.24748 )
+shape = SubResource( 5 )
+
+[connection signal="chord_hit" from="HitZoneWall" to="." method="_on_HitZone_chord_hit"]
+[connection signal="chord_missed" from="HitZoneWall" to="." method="_on_HitZone_chord_missed"]
+[connection signal="area_entered" from="DeathZone" to="." method="_on_DeathArea_area_entered"]
