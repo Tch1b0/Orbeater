@@ -24,11 +24,14 @@ autoplay = true
 [node name="Orb" parent="." instance=ExtResource( 2 )]
 position = Vector2( 481, 268 )
 color = Color( 0.741176, 0.109804, 0.917647, 1 )
+energy = 5.0
 
 [node name="Orb2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 591, 407 )
 color = Color( 0.105882, 0.882353, 0.0784314, 1 )
+energy = 5.0
 
 [node name="Orb3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 315, 390 )
 color = Color( 0.0470588, 0.776471, 0.921569, 1 )
+energy = 5.0

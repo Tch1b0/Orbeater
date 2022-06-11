@@ -17,7 +17,7 @@ func explode():
 	$Orb.explode()
 
 func _process(delta):
-	if not exploding:
+	if not Global.game_paused and not exploding:
 		move_local_x(-Global.game_speed * delta * 100)
 
 func _on_Orb_tree_exiting():

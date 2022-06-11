@@ -1,3 +1,4 @@
 extends Node
 
-var game_speed: float = 5.0
+var game_speed: float = 3.0
+var game_paused: bool = false

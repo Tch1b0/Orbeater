@@ -23,6 +23,7 @@ func _ready():
 	death_zone.connect("area_entered", self, "_on_DeathZone_area_entered")
 
 func _on_chord_hit(chord, good_hit):
+	if chord.exploding: return
 	if good_hit:
 		set_score(score + 100)
 	else:

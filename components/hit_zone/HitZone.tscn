@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://components/hit_zone/HitZone.gd" type="Script" id=1]
 
@@ -8,19 +8,71 @@ extents = Vector2( 84.5, 301.75 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 10, 75 )
 
+[sub_resource type="Gradient" id=5]
+interpolation_mode = 2
+offsets = PoolRealArray( 0.155102, 0.477745, 0.820408 )
+colors = PoolColorArray( 0.0235294, 0.0196078, 0, 0, 0.992157, 0.708088, 0.0352941, 0.392157, 1, 0.996078, 0.992157, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "activate"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 0.31864, 1, 2.21914 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="HitZone" type="Area2D"]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 scale = Vector2( 1, 0.25 )
 shape = SubResource( 3 )
 
 [node name="InnerHitZone" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InnerHitZone"]
 shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -8.82149e-06, 0 )
+scale = Vector2( 0.0820313, 150 )
+texture = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 7 )
+anims/activate = SubResource( 8 )
 
 [connection signal="area_entered" from="." to="." method="_on_HitZone_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_HitZone_area_exited"]

@@ -154,6 +154,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [ -10.0 ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("MainMenu/VBoxContainer:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "fade_out"
@@ -293,6 +305,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 1018, 495 ), Vector2( 1018, 495 ), Vector2( 1018, 122 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("MainMenu/VBoxContainer:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 4.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -363,43 +387,36 @@ __meta__ = {
 
 [node name="Orb" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 231, 395 )
-scale = Vector2( 0.25, 0.25 )
 color = Color( 0.87451, 0.831373, 0.145098, 1 )
 display_dot = false
 
 [node name="Orb6" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 844, 492 )
-scale = Vector2( 0.25, 0.25 )
 color = Color( 0.0980392, 0.792157, 0.321569, 1 )
 display_dot = false
 
 [node name="Orb7" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 913, 312 )
-scale = Vector2( 0.25, 0.25 )
 color = Color( 0.686275, 0.0901961, 0.752941, 1 )
 display_dot = false
 
 [node name="Orb2" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 92, 323 )
-scale = Vector2( 0.25, 0.25 )
 color = Color( 0.0980392, 0.792157, 0.321569, 1 )
 display_dot = false
 
 [node name="Orb3" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 70, 513 )
-scale = Vector2( 0.25, 0.25 )
 color = Color( 0.686275, 0.0901961, 0.752941, 1 )
 display_dot = false
 
 [node name="Orb4" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 662, 313 )
-scale = Vector2( 0.25, 0.25 )
 color = Color( 0.87451, 0.831373, 0.145098, 1 )
 display_dot = false
 
 [node name="Orb5" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 375, 314 )
-scale = Vector2( 0.25, 0.25 )
 color = Color( 0.686275, 0.0901961, 0.752941, 1 )
 display_dot = false
 

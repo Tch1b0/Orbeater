@@ -11,5 +11,5 @@ dest_files=[ "res://.import/modular_run_211022_0083.mp3-8367f038cec48f7417b86cc7
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

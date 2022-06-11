@@ -11,5 +11,5 @@ dest_files=[ "res://.import/avgwave.mp3-b82a857d51c7fa806a31859fce4d31ae.mp3str"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

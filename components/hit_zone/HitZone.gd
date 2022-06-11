@@ -11,7 +11,8 @@ onready var inner_chord_inside := []
 
 func _process(_delta):
 	if Input.is_action_just_pressed(input_action):
-		if not chords_inside:
+		$AnimationPlayer.play("activate")
+		if len(chords_inside) == 0:
 			emit_signal("redundant_input")
 		else:
 			for chord in chords_inside:
@@ -23,7 +24,7 @@ func _on_HitZone_area_entered(area):
 	chords_inside.append(area)
 
 func _on_HitZone_area_exited(area):
-	if area.is_queued_for_deletion():
+	if area.exploding:
 		return
 	chords_inside.erase(area)
 	emit_signal("chord_missed", area)

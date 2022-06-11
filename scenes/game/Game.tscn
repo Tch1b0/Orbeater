@@ -1,13 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/audio/avgwave.mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=2]
 [ext_resource path="res://components/hit_zone_wall/HitZoneWall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://components/chord_orb/ChordOrb.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/game_controller/GameController.gd" type="Script" id=5]
 [ext_resource path="res://assets/visual/Arrow.png" type="Texture" id=6]
 [ext_resource path="res://assets/special/ConcertOne-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=8]
+[ext_resource path="res://assets/audio/bopp.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/thelostwalkmanhit.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/tick.mp3" type="AudioStream" id=11]
 
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0.21365, 0.261128, 0.391691, 0.409496 )
@@ -31,8 +33,89 @@ outline_color = Color( 0.0941176, 0.309804, 0.0196078, 1 )
 extra_spacing_bottom = 15
 font_data = ExtResource( 7 )
 
+[sub_resource type="DynamicFont" id=9]
+size = 240
+extra_spacing_bottom = 15
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CountdownLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CountdownLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "3" ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "intro"
+length = 3.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("CountdownLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CountdownLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "3", "2", "1", "GO!" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("CountdownSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 8 )
+countdown_sounds = [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ) ]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -77,70 +160,49 @@ rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 6 )
 
+[node name="Bars" type="Node2D" parent="Background"]
+
+[node name="Bar" type="Sprite" parent="Background/Bars"]
+position = Vector2( 735.625, 150 )
+scale = Vector2( 0.281616, 12 )
+texture = SubResource( 4 )
+
+[node name="Bar2" type="Sprite" parent="Background/Bars"]
+position = Vector2( 735.625, 301 )
+scale = Vector2( 0.281006, 12 )
+texture = SubResource( 4 )
+
+[node name="Bar3" type="Sprite" parent="Background/Bars"]
+position = Vector2( 735.625, 452 )
+scale = Vector2( 0.281006, 12 )
+texture = SubResource( 4 )
+
 [node name="GameController" type="Node" parent="."]
 script = ExtResource( 5 )
 hit_zone_wall_path = NodePath("../HitZoneWall")
 death_zone_path = NodePath("../DeathZone")
+
+[node name="ChordSpawns" type="Node2D" parent="."]
+
+[node name="ChordSpawn1" type="Position2D" parent="ChordSpawns"]
+position = Vector2( 1108, 72 )
+
+[node name="ChordSpawn2" type="Position2D" parent="ChordSpawns"]
+position = Vector2( 1108, 225 )
+
+[node name="ChordSpawn3" type="Position2D" parent="ChordSpawns"]
+position = Vector2( 1108, 382 )
+
+[node name="ChordSpawn4" type="Position2D" parent="ChordSpawns"]
+position = Vector2( 1108, 535 )
+
+[node name="Chords" type="Node2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 autoplay = true
 
 [node name="HitZoneWall" parent="." instance=ExtResource( 3 )]
-
-[node name="Bars" type="Node2D" parent="."]
-
-[node name="Bar" type="Sprite" parent="Bars"]
-position = Vector2( 735.625, 150 )
-scale = Vector2( 0.281616, 12 )
-texture = SubResource( 4 )
-
-[node name="Bar2" type="Sprite" parent="Bars"]
-position = Vector2( 735.625, 301 )
-scale = Vector2( 0.281006, 12 )
-texture = SubResource( 4 )
-
-[node name="Bar3" type="Sprite" parent="Bars"]
-position = Vector2( 735.625, 452 )
-scale = Vector2( 0.281006, 12 )
-texture = SubResource( 4 )
-
-[node name="Chords" type="Node2D" parent="."]
-
-[node name="ChordOrb2" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 772, 85 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb4" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 477, 531 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb5" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 1799, 244 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb6" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 1971, 106 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb7" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 2119, 404 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb11" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 1576, 385 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb12" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 1133, 533 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
 
 [node name="DeathZone" type="Area2D" parent="."]
 scale = Vector2( 1.463, 35.041 )
@@ -157,4 +219,30 @@ rect_rotation = 270.0
 custom_fonts/font = SubResource( 8 )
 text = "0"
 
+[node name="CountdownLabel" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 2.0
+margin_top = 127.0
+margin_right = 1023.0
+margin_bottom = 429.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 20
+custom_constants/shadow_offset_y = 12
+custom_fonts/font = SubResource( 9 )
+text = "3"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 11 )
+anims/intro = SubResource( 10 )
+
+[node name="CountdownSound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="score_updated" from="GameController" to="." method="_on_GameController_score_updated"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

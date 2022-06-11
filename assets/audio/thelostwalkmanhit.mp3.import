@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/thelostwalkmanhit.mp3-e920946a574d76d35014cc0888f05a12.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/thelostwalkmanhit.mp3"
+dest_files=[ "res://.import/thelostwalkmanhit.mp3-e920946a574d76d35014cc0888f05a12.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
