@@ -1,37 +1,86 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/audio/avgwave.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=2]
 [ext_resource path="res://components/hit_zone_wall/HitZoneWall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/chord_orb/ChordOrb.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/game_controller/GameController.gd" type="Script" id=5]
+[ext_resource path="res://assets/visual/Arrow.png" type="Texture" id=6]
+[ext_resource path="res://assets/special/ConcertOne-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://scenes/game/Game.gd" type="Script" id=8]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.0104712, 0.230366, 0.240838, 0.434555, 1 )
-colors = PoolColorArray( 0.433594, 0.433594, 0.433594, 1, 0.738281, 0.738281, 0.738281, 1, 0.878906, 0.0205994, 0.0205994, 1, 0.167969, 0.167969, 0.167969, 1, 0.0898438, 0.0898438, 0.0898438, 1 )
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.21365, 0.261128, 0.391691, 0.409496 )
+colors = PoolColorArray( 0.211765, 0.211765, 0.211765, 0, 0.462745, 0.380392, 0.941176, 0.486275, 0.756863, 0.0941176, 0.941176, 0.584314, 0.443137, 0.443137, 0.443137, 0 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.989529 )
-colors = PoolColorArray( 0.0195313, 0.0195313, 0.0195313, 1, 0.175781, 0.175781, 0.175781, 1 )
+colors = PoolColorArray( 0.518959, 0.0574493, 0.980469, 1, 0.1367, 0.0249329, 0.335938, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
+[sub_resource type="DynamicFont" id=8]
+size = 32
+outline_size = 1
+outline_color = Color( 0.0941176, 0.309804, 0.0196078, 1 )
+extra_spacing_bottom = 15
+font_data = ExtResource( 7 )
+
 [node name="Game" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Layer1" type="Sprite" parent="Background"]
+scale = Vector2( 1.00392, 1 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Layer2" type="Sprite" parent="Background"]
+scale = Vector2( 0.5, 600 )
+texture = SubResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Arrows" type="Node2D" parent="Background"]
+
+[node name="ArrowUp" type="Sprite" parent="Background/Arrows"]
+position = Vector2( 169, 83 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="ArrowUp2" type="Sprite" parent="Background/Arrows"]
+position = Vector2( 170, 385 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="ArrowUp3" type="Sprite" parent="Background/Arrows"]
+position = Vector2( 180, 523 )
+rotation = 4.71239
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="ArrowUp4" type="Sprite" parent="Background/Arrows"]
+position = Vector2( 166, 226 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
 
 [node name="GameController" type="Node" parent="."]
 script = ExtResource( 5 )
 hit_zone_wall_path = NodePath("../HitZoneWall")
 death_zone_path = NodePath("../DeathZone")
-
-[node name="Background" type="Sprite" parent="."]
-position = Vector2( 512.5, 300.25 )
-scale = Vector2( 0.500488, 601.5 )
-texture = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
@@ -58,18 +107,8 @@ texture = SubResource( 4 )
 
 [node name="Chords" type="Node2D" parent="."]
 
-[node name="ChordOrb" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 600, 223 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
 [node name="ChordOrb2" parent="Chords" instance=ExtResource( 4 )]
 position = Vector2( 772, 85 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb3" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 920, 383 )
 scale = Vector2( 0.5, 0.5 )
 color = Color( 0.807843, 0.12549, 0.811765, 1 )
 
@@ -93,21 +132,6 @@ position = Vector2( 2119, 404 )
 scale = Vector2( 0.5, 0.5 )
 color = Color( 0.807843, 0.12549, 0.811765, 1 )
 
-[node name="ChordOrb8" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 1676, 552 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb9" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 1256, 225 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
-[node name="ChordOrb10" parent="Chords" instance=ExtResource( 4 )]
-position = Vector2( 1428, 87 )
-scale = Vector2( 0.5, 0.5 )
-color = Color( 0.807843, 0.12549, 0.811765, 1 )
-
 [node name="ChordOrb11" parent="Chords" instance=ExtResource( 4 )]
 position = Vector2( 1576, 385 )
 scale = Vector2( 0.5, 0.5 )
@@ -125,6 +149,12 @@ scale = Vector2( 1.463, 35.041 )
 position = Vector2( -155.844, 8.24748 )
 shape = SubResource( 5 )
 
-[connection signal="chord_hit" from="HitZoneWall" to="." method="_on_HitZone_chord_hit"]
-[connection signal="chord_missed" from="HitZoneWall" to="." method="_on_HitZone_chord_missed"]
-[connection signal="area_entered" from="DeathZone" to="." method="_on_DeathArea_area_entered"]
+[node name="ScoreLabel" type="Label" parent="."]
+margin_top = 366.0
+margin_right = 191.0
+margin_bottom = 407.0
+rect_rotation = 270.0
+custom_fonts/font = SubResource( 8 )
+text = "0"
+
+[connection signal="score_updated" from="GameController" to="." method="_on_GameController_score_updated"]

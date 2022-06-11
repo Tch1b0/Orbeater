@@ -12,7 +12,7 @@ input_action = "ui_up"
 
 [node name="HitZone2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325, 226 )
-input_action = "ui_left"
+input_action = "ui_down"
 
 [node name="HitZone3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325.055, 377 )
@@ -20,4 +20,4 @@ input_action = "ui_right"
 
 [node name="HitZone4" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325.055, 528 )
-input_action = "ui_down"
+input_action = "ui_left"

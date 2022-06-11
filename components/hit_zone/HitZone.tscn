@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://components/hit_zone/HitZone.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 84.5, 301.75 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 75 )
 
 [node name="HitZone" type="Area2D"]
 script = ExtResource( 1 )
@@ -12,5 +15,14 @@ script = ExtResource( 1 )
 scale = Vector2( 1, 0.25 )
 shape = SubResource( 3 )
 
+[node name="InnerHitZone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnerHitZone"]
+shape = SubResource( 4 )
+
 [connection signal="area_entered" from="." to="." method="_on_HitZone_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_HitZone_area_exited"]
+[connection signal="area_entered" from="InnerHitZone" to="." method="_on_InnerHitZone_area_entered"]
+[connection signal="area_exited" from="InnerHitZone" to="." method="_on_InnerHitZone_area_exited"]
