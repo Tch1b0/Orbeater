@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://components/orb/Orb.gd" type="Script" id=1]
+[ext_resource path="res://assets/visual/light.png" type="Texture" id=2]
+[ext_resource path="res://assets/visual/transparent_circle.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 global_position;
+uniform vec2 screen_size;
+uniform float force;
+uniform float size;
+uniform float thickness;
+
+void fragment(){
+	vec2 center = global_position;
+	float ratio = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y;
+	center.x = center.x / screen_size.x;
+	center.x = (center.x - 0.5) / ratio + 0.5;
+	center.y = (screen_size.y - center.y) / screen_size.y;
+	vec2 scaledUV = (SCREEN_UV - vec2(0.5, 0.0) ) / vec2(ratio, 1.0) + vec2(0.5, 0.0);
+	float mask = (1.0 - smoothstep(size-0.1, size, length(scaledUV - center))) * smoothstep(size-thickness-0.1, size-thickness, length(scaledUV - center));
+	vec2 disp = normalize(SCREEN_UV - center) * force * mask;
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV - disp);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/global_position = null
+shader_param/screen_size = null
+shader_param/force = null
+shader_param/size = null
+shader_param/thickness = null
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 90.0
+flag_disable_z = true
+orbit_velocity = 0.1
+orbit_velocity_random = 0.0
+
+[node name="Orb" type="Node2D"]
+material = SubResource( 2 )
+script = ExtResource( 1 )
+
+[node name="CircleLight" type="Light2D" parent="."]
+texture = ExtResource( 2 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="CircleParticles" type="Particles2D" parent="."]
+amount = 100
+process_material = SubResource( 3 )

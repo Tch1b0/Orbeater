@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/avgwave.mp3-b82a857d51c7fa806a31859fce4d31ae.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/avgwave.mp3"
+dest_files=[ "res://.import/avgwave.mp3-b82a857d51c7fa806a31859fce4d31ae.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,7 @@
+{
+ "plugin": false,
+ "dependencies": [
+  "Glow-Project/ppm-ui"
+ ],
+ "sub-dependencies": []
+}

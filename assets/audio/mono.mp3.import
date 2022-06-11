@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mono.mp3-ba2b59c4245f6d5edf2d45025287a023.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/mono.mp3"
+dest_files=[ "res://.import/mono.mp3-ba2b59c4245f6d5edf2d45025287a023.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
