@@ -44,7 +44,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="gwj46"
+config/name="Orbeater"
 run/main_scene="res://scenes/menu/Menu.tscn"
 config/icon="res://icon.png"
 
