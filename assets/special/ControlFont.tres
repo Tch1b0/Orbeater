@@ -1,8 +1,9 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://assets/special/ConcertOne-Regular.ttf" type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/special/ConcertOne-Regular.ttf"
 
 [resource]
-size = 32
-extra_spacing_bottom = 15
-font_data = ExtResource( 1 )
+size = 23
+extra_spacing_bottom = 9
+font_data = SubResource( 1 )

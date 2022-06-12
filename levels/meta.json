@@ -1,0 +1,8 @@
+{
+    "Pulse": {
+        "artist": "Noisetäter",
+        "length": 240,
+        "cover": "res://levels/images/Pulse.jpg",
+        "level-data": "res://levels/level_data/Pulse.json"
+    }
+}
