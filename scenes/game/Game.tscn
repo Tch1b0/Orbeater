@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://assets/audio/avgwave.mp3" type="AudioStream" id=1]
+[ext_resource path="res://components/game_controller/GameController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=2]
 [ext_resource path="res://components/hit_zone_wall/HitZoneWall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://components/game_controller/GameController.gd" type="Script" id=5]
 [ext_resource path="res://assets/visual/Arrow.png" type="Texture" id=6]
 [ext_resource path="res://assets/special/ConcertOne-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=8]
@@ -117,6 +116,12 @@ tracks/2/keys = {
 script = ExtResource( 8 )
 countdown_sounds = [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ) ]
 
+[node name="GameController" parent="." instance=ExtResource( 1 )]
+level_name = "Pulse"
+hit_zone_wall_path = NodePath("../HitZoneWall")
+death_zone_path = NodePath("../DeathZone")
+chord_spawn_paths = [ NodePath("../ChordSpawns/ChordSpawn1"), NodePath("../ChordSpawns/ChordSpawn2"), NodePath("../ChordSpawns/ChordSpawn3"), NodePath("../ChordSpawns/ChordSpawn4") ]
+
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Layer1" type="Sprite" parent="Background"]
@@ -177,11 +182,6 @@ position = Vector2( 735.625, 452 )
 scale = Vector2( 0.281006, 12 )
 texture = SubResource( 4 )
 
-[node name="GameController" type="Node" parent="."]
-script = ExtResource( 5 )
-hit_zone_wall_path = NodePath("../HitZoneWall")
-death_zone_path = NodePath("../DeathZone")
-
 [node name="ChordSpawns" type="Node2D" parent="."]
 
 [node name="ChordSpawn1" type="Position2D" parent="ChordSpawns"]
@@ -197,10 +197,6 @@ position = Vector2( 1108, 382 )
 position = Vector2( 1108, 535 )
 
 [node name="Chords" type="Node2D" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
-autoplay = true
 
 [node name="HitZoneWall" parent="." instance=ExtResource( 3 )]
 
@@ -239,10 +235,4 @@ anims/intro = SubResource( 10 )
 [node name="CountdownSound" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 
-[node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[connection signal="score_updated" from="GameController" to="." method="_on_GameController_score_updated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

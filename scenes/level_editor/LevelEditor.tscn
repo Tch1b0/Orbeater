@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=1]
+[ext_resource path="res://scenes/level_editor/LevelEditor.gd" type="Script" id=2]
+[ext_resource path="res://assets/special/ControlFont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/special/ConcertOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+extra_spacing_bottom = 9
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 23
+extra_spacing_bottom = 9
+font_data = SubResource( 1 )
+
+[node name="LevelEditor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 1.004, 1 )
+texture = ExtResource( 1 )
+
+[node name="SongNameLabel" type="Label" parent="."]
+margin_right = 1023.0
+margin_bottom = 103.0
+custom_fonts/font = SubResource( 3 )
+text = "Song Name"
+align = 1
+valign = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 498.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="SaveButton" type="Button" parent="CenterContainer"]
+margin_left = 483.0
+margin_top = 34.0
+margin_right = 540.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 2 )
+text = "SAVE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 383.0
+margin_top = 250.0
+margin_right = 649.0
+margin_bottom = 429.0
+
+[node name="LineCheckBoxes" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 266.0
+margin_bottom = 156.0
+
+[node name="CheckBoxLine1" type="CheckBox" parent="VBoxContainer/LineCheckBoxes"]
+margin_right = 266.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 3 )
+text = "Line 1"
+
+[node name="CheckBoxLine2" type="CheckBox" parent="VBoxContainer/LineCheckBoxes"]
+margin_top = 40.0
+margin_right = 266.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 3 )
+text = "Line 2"
+
+[node name="CheckBoxLine3" type="CheckBox" parent="VBoxContainer/LineCheckBoxes"]
+margin_top = 80.0
+margin_right = 266.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 3 )
+text = "Line 3"
+
+[node name="CheckBoxLine4" type="CheckBox" parent="VBoxContainer/LineCheckBoxes"]
+margin_top = 120.0
+margin_right = 266.0
+margin_bottom = 156.0
+custom_fonts/font = ExtResource( 3 )
+text = "Line 4"
+
+[node name="SongPositionSlider" type="HSlider" parent="VBoxContainer"]
+margin_top = 160.0
+margin_right = 266.0
+margin_bottom = 176.0
+min_value = 3.0
+step = 0.1
+value = 3.0
+
+[node name="SongPositionLabel" type="Label" parent="VBoxContainer"]
+margin_top = 180.0
+margin_right = 266.0
+margin_bottom = 194.0
+align = 1
+
+[node name="PlayToggleButton" type="Button" parent="VBoxContainer"]
+margin_top = 198.0
+margin_right = 266.0
+margin_bottom = 232.0
+custom_fonts/font = SubResource( 2 )
+text = "PLAY/STOP"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="CenterContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/LineCheckBoxes/CheckBoxLine1" to="." method="spawn_orb_at" binds= [ 0 ]]
+[connection signal="pressed" from="VBoxContainer/LineCheckBoxes/CheckBoxLine2" to="." method="spawn_orb_at" binds= [ 1 ]]
+[connection signal="pressed" from="VBoxContainer/LineCheckBoxes/CheckBoxLine3" to="." method="spawn_orb_at" binds= [ 2 ]]
+[connection signal="pressed" from="VBoxContainer/LineCheckBoxes/CheckBoxLine4" to="." method="spawn_orb_at" binds= [ 3 ]]
+[connection signal="drag_ended" from="VBoxContainer/SongPositionSlider" to="." method="_on_SongPositionSlider_drag_ended"]
+[connection signal="pressed" from="VBoxContainer/PlayToggleButton" to="." method="_on_PlayToggleButton_pressed"]

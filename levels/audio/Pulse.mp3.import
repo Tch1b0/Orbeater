@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pulse.mp3-ad0a677b74b9e156ab857df6fb24c211.mp3str"
+
+[deps]
+
+source_file="res://levels/audio/Pulse.mp3"
+dest_files=[ "res://.import/Pulse.mp3-ad0a677b74b9e156ab857df6fb24c211.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

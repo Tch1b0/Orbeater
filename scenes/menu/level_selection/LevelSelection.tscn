@@ -24,3 +24,5 @@ margin_bottom = 480.0
 custom_constants/vseparation = 150
 custom_constants/hseparation = 150
 columns = 4
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

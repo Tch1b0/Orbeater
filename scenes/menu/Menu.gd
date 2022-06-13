@@ -1,6 +1,7 @@
 extends Control
 
 var next_scene: String
+var is_editing: bool = false
 
 func switch_scene(path: String) -> void:
 	next_scene = path
@@ -25,8 +26,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		else:
 			quit()
 
-func _on_PlayButton_pressed():
-	switch_scene("res://scenes/game/Game.tscn")
+func _on_SelectLevelButton_pressed():
+	$MainMenu.hide()
+	$LevelSelection.show()
 
 func _on_SettingsButton_pressed():
 	$MainMenu.hide()
@@ -35,6 +37,20 @@ func _on_SettingsButton_pressed():
 func _on_ExitButton_pressed():
 	$AnimationPlayer.play("fade_out")
 
-func _on_SettingsMenu_back():
+func _on_back():
+	is_editing = false
+
+	$LevelSelection.hide()
 	$SettingsMenu.hide()
 	$MainMenu.show()
+
+func _on_LevelSelection_switch_scene(scene_path):
+	if is_editing:
+		switch_scene("res://scenes/level_editor/LevelEditor.tscn")
+	else:
+		switch_scene(scene_path)
+
+func _on_LevelEditorButton_pressed():
+	is_editing = true
+	$MainMenu.hide()
+	$LevelSelection.show()

@@ -12,6 +12,7 @@ func _enter_tree():
 	set_default("fullscreen", false)
 	set_default("master_volume_db", 0.0)
 	set_default("mute", false)
+	adapt_settings()
 
 func sets(setting: String, value):
 	.sets(setting, value)

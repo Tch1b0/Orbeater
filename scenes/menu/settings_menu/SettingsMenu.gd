@@ -6,6 +6,9 @@ func update_ui():
 	$VBoxContainer/MuteCheckBox.pressed = settings.gets("mute")
 	$VBoxContainer/MasterVolumeSlider.value = settings.gets("master_volume_db")
 
+func _ready():
+	update_ui()
+
 func _on_MuteCheckBox_pressed():
 	settings.sets("mute", $VBoxContainer/MuteCheckBox.pressed)
 	update_ui()
