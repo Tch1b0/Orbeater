@@ -401,37 +401,31 @@ __meta__ = {
 [node name="Orb1" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 231, 395 )
 color = Color( 0.87451, 0.831373, 0.145098, 1 )
-energy = 2.58242
 display_dot = false
 
 [node name="Orb2" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 92, 323 )
 color = Color( 0.0980392, 0.792157, 0.321569, 1 )
-energy = 2.58242
 display_dot = false
 
 [node name="Orb3" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 70, 513 )
 color = Color( 0.686275, 0.0901961, 0.752941, 1 )
-energy = 2.58242
 display_dot = false
 
 [node name="Orb4" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 662, 313 )
 color = Color( 0.87451, 0.831373, 0.145098, 1 )
-energy = 2.58242
 display_dot = false
 
 [node name="Orb5" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 844, 492 )
 color = Color( 0.0980392, 0.792157, 0.321569, 1 )
-energy = 2.58242
 display_dot = false
 
 [node name="Orb6" parent="Orbs" instance=ExtResource( 4 )]
 position = Vector2( 913, 312 )
 color = Color( 0.686275, 0.0901961, 0.752941, 1 )
-energy = 2.58242
 display_dot = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

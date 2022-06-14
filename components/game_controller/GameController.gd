@@ -47,7 +47,6 @@ func _process(_delta):
 	if $MusicPlayer.get_playback_position() == $MusicPlayer.stream.get_length():
 		end_game()
 	elif level_data["orbs"] and orb_arrival_time >= level_data["orbs"][0][0]:
-		print($MusicPlayer.get_playback_position())
 		var spawn = chord_spawns[level_data["orbs"][0][1]]
 		var orb = get_random_chord_orb()
 		spawn.add_child(orb)

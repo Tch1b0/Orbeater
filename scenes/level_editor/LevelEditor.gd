@@ -32,13 +32,13 @@ func _on_PlayToggleButton_pressed():
 		$MusicPlayer.play(player_position)
 		$VBoxContainer/PlayToggleButton.text = "STOP"
 
-func _on_SongPositionSlider_drag_ended(value_changed):
+func _on_SongPositionSlider_drag_ended(value_changed: bool):
 	if not value_changed: return
 	player_position = $VBoxContainer/SongPositionSlider.value
 	if $MusicPlayer.playing:
 		_on_PlayToggleButton_pressed()
 
-func spawn_orb_at(idx: int) -> void:
+func spawn_orb_at(_idx: int) -> void:
 	for orb in level_data["orbs"]:
 		if stepify(orb[0], .1) == stepify(player_position, .1):
 			level_data["orbs"].erase(orb)

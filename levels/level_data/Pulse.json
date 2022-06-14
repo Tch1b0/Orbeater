@@ -1,1 +1,8 @@
-{"audio":"res://levels/audio/Pulse.mp3","orbs":[[4,3],[4.3,1],[5.095601,0],[5.095601,2],[5.7,0],[5.7,2]]}
+{
+    "audio": "res://levels/audio/Pulse.mp3",
+    "orbs": [
+        [4, 1],
+        [4, 3],
+        [4.1, 3]
+    ]
+}

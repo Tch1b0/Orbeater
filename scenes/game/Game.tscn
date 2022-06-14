@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://components/game_controller/GameController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=2]
 [ext_resource path="res://components/hit_zone_wall/HitZoneWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://components/pause_menu/PauseMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/visual/Arrow.png" type="Texture" id=6]
 [ext_resource path="res://assets/special/ConcertOne-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=8]
@@ -112,6 +113,13 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0, 0, 0, 0.572549 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 8 )
 countdown_sounds = [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ) ]
@@ -208,10 +216,10 @@ position = Vector2( -155.844, 8.24748 )
 shape = SubResource( 5 )
 
 [node name="ScoreLabel" type="Label" parent="."]
-margin_top = 366.0
-margin_right = 191.0
-margin_bottom = 407.0
-rect_rotation = 270.0
+margin_left = 11.0
+margin_top = 1.0
+margin_right = 202.0
+margin_bottom = 42.0
 custom_fonts/font = SubResource( 8 )
 text = "0"
 
@@ -227,6 +235,9 @@ custom_constants/shadow_offset_y = 12
 custom_fonts/font = SubResource( 9 )
 text = "3"
 align = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 11 )
@@ -235,4 +246,16 @@ anims/intro = SubResource( 10 )
 [node name="CountdownSound" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 
+[node name="BlurTexture" type="TextureRect" parent="."]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = SubResource( 13 )
+expand = true
+
+[node name="PauseMenu" parent="." instance=ExtResource( 4 )]
+visible = false
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="close_menu" from="PauseMenu" to="." method="_on_PauseMenu_close_menu"]
+[connection signal="go_home" from="PauseMenu" to="." method="_on_PauseMenu_go_home"]
