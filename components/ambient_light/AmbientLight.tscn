@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/visual/boxlight.png" type="Texture" id=1]
+[ext_resource path="res://components/ambient_light/AmbientLight.gd" type="Script" id=2]
+
+[node name="AmbientLight" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 1 )

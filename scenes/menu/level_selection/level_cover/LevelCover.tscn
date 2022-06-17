@@ -93,8 +93,8 @@ text = "Song Title"
 [node name="GreenCoverButton" type="Button" parent="CenterContainer/VBoxContainer"]
 visible = false
 margin_top = 32.0
-margin_right = 136.0
-margin_bottom = 119.0
+margin_right = 101.0
+margin_bottom = 46.0
 custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = SubResource( 4 )

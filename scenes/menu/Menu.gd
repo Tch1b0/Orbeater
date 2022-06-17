@@ -16,7 +16,7 @@ func _ready():
 	$AnimationPlayer.play("intro")
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept") and $AnimationPlayer.is_playing():
+	if Input.is_action_just_pressed("ui_accept") and $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "intro":
 		$AnimationPlayer.play("RESET")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

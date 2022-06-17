@@ -7,17 +7,17 @@
 script = ExtResource( 2 )
 
 [node name="HitZone1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 325, 75 )
+position = Vector2( 326, 75 )
 input_action = "ui_up"
 
 [node name="HitZone2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 325, 226 )
-input_action = "ui_down"
-
-[node name="HitZone3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 325.055, 377 )
+position = Vector2( 326, 226 )
 input_action = "ui_right"
 
+[node name="HitZone3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 326, 377 )
+input_action = "ui_down"
+
 [node name="HitZone4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 325.055, 528 )
+position = Vector2( 326, 528 )
 input_action = "ui_left"

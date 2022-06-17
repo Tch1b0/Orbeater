@@ -2,23 +2,34 @@ extends Node2D
 
 export (Array, AudioStream) var countdown_sounds
 
+var previous_score: float = 0.0
+
 var chord_orb_scene = preload("res://components/chord_orb/ChordOrb.tscn")
 
 func toggle_pause():
 	Global.game_paused = not Global.game_paused
 	if Global.game_paused:
-		$BlurTexture.show()
-		$PauseMenu.show()
+		$HUD/BlurTexture.show()
+		$HUD/PauseMenu.show()
 	else:
-		$BlurTexture.hide()
-		$PauseMenu.hide()
+		$HUD/BlurTexture.hide()
+		$HUD/PauseMenu.hide()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("escape") and $AnimationPlayer.current_animation != "intro":
 		toggle_pause()
 
 func _on_GameController_score_updated(new_score):
-	$ScoreLabel.text = str(new_score)
+	$HUD/ScoreLabel.text = str(new_score)
+	var diff = new_score - previous_score
+	$HUD/ScoreDiffLabel.text = ("+" if diff > 0 else "") + str(diff)
+	if diff > 0:
+		$HUD/ScoreDiffLabel.modulate = Color.green
+	else:
+		$HUD/ScoreDiffLabel.modulate = Color.red
+	$HUD/ScoreDiffLabel.show()
+	$HUD/ScoreDiffTimer.start()
+	previous_score = new_score
 
 func _ready():
 	Global.game_paused = true
@@ -36,3 +47,7 @@ func _on_PauseMenu_close_menu():
 
 func _on_PauseMenu_go_home():
 	get_tree().change_scene("res://scenes/menu/Menu.tscn")
+
+
+func _on_ScoreDiffTimer_timeout():
+	$HUD/ScoreDiffLabel.hide()

@@ -52,12 +52,10 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 scale = Vector2( 1, 0.25 )
 shape = SubResource( 3 )
 
 [node name="InnerHitZone" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
