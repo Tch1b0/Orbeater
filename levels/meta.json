@@ -11,6 +11,12 @@
         "difficulty": "EASY",
         "level-data": "res://levels/level_data/JTL.json"
     },
+    "MDHK": {
+        "artist": "Noisetäter feat. Narkoleptikk",
+        "cover": "res://levels/images/Machdashauskaputt.jpg",
+        "difficulty": "NORMAL",
+        "level-data": "res://levels/level_data/MDHK.json"
+    },
     "Excited": {
         "artist": "Noisetäter",
         "cover": "res://levels/images/Machdashauskaputt.jpg",

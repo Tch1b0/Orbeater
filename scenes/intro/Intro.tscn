@@ -329,7 +329,7 @@ margin_bottom = 40.0
 position = Vector2( 508, 282 )
 scale = Vector2( 15, 15 )
 frames = SubResource( 34 )
-frame = 17
+frame = 26
 playing = true
 
 [node name="Background" type="TextureRect" parent="Items/MadeBy"]
@@ -353,11 +353,12 @@ text = "Game made by Tch1b0"
 
 [node name="NoisetaterCredit" type="Label" parent="Items/MadeBy"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 407.0
+margin_left = 402.0
 margin_top = 386.0
 margin_right = 627.0
 margin_bottom = 409.0
 custom_fonts/font = SubResource( 40 )
-text = "All songs made by Noisetäter"
+text = "Songs made by Noisetäter"
+align = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

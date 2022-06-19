@@ -60,6 +60,7 @@ func _process(_delta):
 		level_data["orbs"].pop_front()
 
 func end_game():
+	$MusicPlayer.stop()
 	LeaderboardApi.end_session(score)
 	yield(LeaderboardApi.http, "request_completed")
 	emit_signal("game_finished", score)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MDHK.mp3-98301cd914d29a30358d46048baa6807.mp3str"
+
+[deps]
+
+source_file="res://levels/audio/MDHK.mp3"
+dest_files=[ "res://.import/MDHK.mp3-98301cd914d29a30358d46048baa6807.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
