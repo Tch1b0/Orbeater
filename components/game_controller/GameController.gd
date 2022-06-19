@@ -2,16 +2,18 @@ extends Node2D
 class_name GameController
 
 signal score_updated(new_score)
+signal game_finished(score)
 
 export var spawn_to_target_distance: int = 770
-export var level_name: String
 export var hit_zone_wall_path: NodePath
 export var death_zone_path: NodePath
 export (Array, NodePath) var chord_spawn_paths
 
+var level_name: String = Levels.selected_level_name
 var chord_orb_scene = preload("res://components/chord_orb/ChordOrb.tscn")
 var score: int = 0 setget set_score
 var song_position: float = 0.0
+var song_length: float
 var chord_spawns: Array
 
 onready var hit_zone_wall: HitZoneWall = get_node(hit_zone_wall_path)
@@ -27,6 +29,8 @@ func _ready():
 		chord_spawns.append(get_node(path))
 
 	$MusicPlayer.stream = load(level_data["audio"])
+	song_length = $MusicPlayer.stream.get_length()
+	# LeaderboardApi.start_session()
 
 	hit_zone_wall.connect("chord_hit", self, "_on_chord_hit")
 	hit_zone_wall.connect("redundant_input", self, "_on_redundant_input")
@@ -34,6 +38,9 @@ func _ready():
 	death_zone.connect("area_entered", self, "_on_DeathZone_area_entered")
 
 func _process(_delta):
+	if song_position == song_length:
+		emit_signal("game_finished", score)
+
 	if not Global.game_paused and $MusicPlayer.playing:
 		song_position = $MusicPlayer.get_playback_position()
 	elif Global.game_paused and $MusicPlayer.playing:
@@ -53,6 +60,7 @@ func _process(_delta):
 		level_data["orbs"].pop_front()
 
 func end_game():
+	LeaderboardApi.end_session(score)
 	get_tree().quit()
 
 func get_random_chord_orb() -> ChordOrb:

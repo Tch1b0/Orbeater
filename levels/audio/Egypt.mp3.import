@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Egypt.mp3-705e66b718a5fcbf0f9bb0d2e67eab25.mp3str"
+
+[deps]
+
+source_file="res://levels/audio/Egypt.mp3"
+dest_files=[ "res://.import/Egypt.mp3-705e66b718a5fcbf0f9bb0d2e67eab25.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

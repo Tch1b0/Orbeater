@@ -31,7 +31,7 @@ func save_metas(data: Dictionary) -> void:
 
 func load_level_data(song_name: String) -> void:
 	level_datas[song_name] = load_json(
-		"res://levels/level_data/{name}.json".format({"name": song_name})
+		metas[song_name]["level-data"]
 	)
 
 func level_data_comparison(a, b):

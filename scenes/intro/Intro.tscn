@@ -298,7 +298,7 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 508, 282 )
 scale = Vector2( 15, 15 )
 frames = SubResource( 34 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Background" type="TextureRect" parent="Items/MadeBy"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/special/ConcertOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/audio/twance.mp3" type="AudioStream" id=5]
 [ext_resource path="res://scenes/menu/settings_menu/SettingsMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/menu/level_selection/LevelSelection.tscn" type="PackedScene" id=7]
+[ext_resource path="res://components/register_box/RegisterBox.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 82
@@ -340,7 +341,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, true ]
+"values": [ true, false ]
 }
 
 [sub_resource type="DynamicFont" id=6]
@@ -470,6 +471,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+method_call_mode = 1
 anims/RESET = SubResource( 4 )
 anims/fade_out = SubResource( 5 )
 anims/intro = SubResource( 3 )
@@ -487,6 +489,9 @@ align = 2
 valign = 2
 uppercase = true
 
+[node name="RegisterBox" parent="." instance=ExtResource( 8 )]
+visible = false
+
 [connection signal="pressed" from="MainMenu/VBoxContainer/SelectLevelButton" to="." method="_on_SelectLevelButton_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/LevelEditorButton" to="." method="_on_LevelEditorButton_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
@@ -495,3 +500,4 @@ uppercase = true
 [connection signal="switch_scene" from="LevelSelection" to="." method="_on_LevelSelection_switch_scene"]
 [connection signal="back" from="SettingsMenu" to="." method="_on_back"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="finished" from="RegisterBox" to="." method="_on_RegisterBox_finished"]

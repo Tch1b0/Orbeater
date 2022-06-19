@@ -1,4 +1,22 @@
 {
+    "Egypt": {
+        "artist": "Noisetäter feat. Prince M",
+        "cover": "res://levels/images/Egypt.jpg",
+        "difficulty": "EASY",
+        "level-data": "res://levels/level_data/Egypt.json"
+    },
+    "MDHK": {
+        "artist": "Noisetäter feat. Narkoleptikk",
+        "cover": "res://levels/images/Machdashauskaputt.jpg",
+        "difficulty": "NORMAL",
+        "level-data": "res://levels/level_data/Machdashauskaputt.json"
+    },
+    "Sangria": {
+        "artist": "Noisetäter feat. Prince M",
+        "cover": "res://levels/images/SangriaUnderground.jpg",
+        "difficulty": "NORMAL",
+        "level-data": "res://levels/level_data/Sangria.json"
+    },
     "Pulse": {
         "artist": "Noisetäter",
         "cover": "res://levels/images/Pulse.jpg",

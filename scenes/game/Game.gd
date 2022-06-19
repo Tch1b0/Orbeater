@@ -16,6 +16,7 @@ func toggle_pause():
 		$HUD/PauseMenu.hide()
 
 func _process(_delta):
+	$ProgressBar.value = $GameController.song_position
 	if Input.is_action_just_pressed("escape") and $AnimationPlayer.current_animation != "intro":
 		toggle_pause()
 
@@ -34,6 +35,7 @@ func _on_GameController_score_updated(new_score):
 func _ready():
 	Global.game_paused = true
 	$GameController.level_name = Levels.selected_level_name
+	$ProgressBar.max_value = $GameController.song_length
 	randomize()
 	$CountdownSound.stream = countdown_sounds[randi() % len(countdown_sounds)]
 	$AnimationPlayer.play("intro")
@@ -48,6 +50,9 @@ func _on_PauseMenu_close_menu():
 func _on_PauseMenu_go_home():
 	get_tree().change_scene("res://scenes/menu/Menu.tscn")
 
-
 func _on_ScoreDiffTimer_timeout():
 	$HUD/ScoreDiffLabel.hide()
+
+func _on_GameController_game_finished(score):
+	LeaderboardApi.end_session(score)
+	_on_PauseMenu_go_home()

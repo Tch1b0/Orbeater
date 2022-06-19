@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SangriaUnderground.mp3-de8f4ac9ad0bfe0fc9bb44c550a2df37.mp3str"
+
+[deps]
+
+source_file="res://levels/audio/SangriaUnderground.mp3"
+dest_files=[ "res://.import/SangriaUnderground.mp3-de8f4ac9ad0bfe0fc9bb44c550a2df37.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

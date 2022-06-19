@@ -19,12 +19,14 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept") and $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "intro":
 		$AnimationPlayer.play("RESET")
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(anim_name: String):
 	if anim_name == "fade_out":
 		if next_scene:
 			get_tree().change_scene(next_scene)
 		else:
 			quit()
+	elif anim_name == "intro" and not LeaderboardApi.user_token:
+		$RegisterBox.show()
 
 func _on_SelectLevelButton_pressed():
 	$MainMenu.hide()
@@ -54,3 +56,6 @@ func _on_LevelEditorButton_pressed():
 	is_editing = true
 	$MainMenu.hide()
 	$LevelSelection.show()
+
+func _on_RegisterBox_finished():
+	$RegisterBox.hide()

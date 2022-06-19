@@ -10,7 +10,7 @@ onready var chords_inside := []
 onready var inner_chord_inside := []
 
 func _process(_delta):
-	if Input.is_action_just_pressed(input_action):
+	if Input.is_action_just_pressed(input_action) and not Global.game_paused:
 		$AnimationPlayer.play("activate")
 		if len(chords_inside) == 0:
 			emit_signal("redundant_input")

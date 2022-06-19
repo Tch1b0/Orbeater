@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Machdashauskaputt.mp3-1a3f2828d01c7a10173baa75c600a194.mp3str"
+
+[deps]
+
+source_file="res://levels/audio/Machdashauskaputt.mp3"
+dest_files=[ "res://.import/Machdashauskaputt.mp3-1a3f2828d01c7a10173baa75c600a194.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
