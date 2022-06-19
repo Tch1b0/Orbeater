@@ -18,7 +18,7 @@ text = "GO BACK"
 
 [node name="Levels" type="GridContainer" parent="."]
 margin_left = 204.0
-margin_top = 163.0
+margin_top = 197.0
 margin_right = 782.0
 margin_bottom = 480.0
 custom_constants/vseparation = 150

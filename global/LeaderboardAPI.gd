@@ -69,8 +69,9 @@ func send_post_request(route: String, data: String) -> void:
 
 func _on_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray):
 	if response_code != 200: return
-	var json = parse_json(body.get_string_from_utf8())
-	if last_request_type == HTTPClient.METHOD_GET:
+	print(result, " ", response_code)
+	var json: Dictionary = parse_json(body.get_string_from_utf8())
+	if last_request_type == HTTPClient.METHOD_GET and json.has("leaderboard"):
 		emit_signal("leaderboard_data_received", json["leaderboard"])
 	elif user_token == "":
 		settings.sets("user_token", json["token"])

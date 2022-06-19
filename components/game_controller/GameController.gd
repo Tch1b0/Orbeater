@@ -13,6 +13,7 @@ var level_name: String = Levels.selected_level_name
 var chord_orb_scene = preload("res://components/chord_orb/ChordOrb.tscn")
 var score: int = 0 setget set_score
 var song_position: float = 0.0
+var game_ended: bool = false
 var song_length: float
 var chord_spawns: Array
 
@@ -20,8 +21,8 @@ onready var hit_zone_wall: HitZoneWall = get_node(hit_zone_wall_path)
 onready var death_zone: Area2D = get_node(death_zone_path)
 onready var level_data: Dictionary = Levels.get_level_data(level_name)
 
-func set_score(new_score):
-	score = max(0, new_score)
+func set_score(new_score: int):
+	score = int(max(0, new_score))
 	emit_signal("score_updated", score)
 
 func _ready():
@@ -30,7 +31,7 @@ func _ready():
 
 	$MusicPlayer.stream = load(level_data["audio"])
 	song_length = $MusicPlayer.stream.get_length()
-	# LeaderboardApi.start_session()
+	LeaderboardApi.start_session()
 
 	hit_zone_wall.connect("chord_hit", self, "_on_chord_hit")
 	hit_zone_wall.connect("redundant_input", self, "_on_redundant_input")
@@ -38,8 +39,9 @@ func _ready():
 	death_zone.connect("area_entered", self, "_on_DeathZone_area_entered")
 
 func _process(_delta):
-	if song_position == song_length:
-		emit_signal("game_finished", score)
+	if not game_ended and int(song_position) == int(song_length):
+		game_ended = true
+		end_game()
 
 	if not Global.game_paused and $MusicPlayer.playing:
 		song_position = $MusicPlayer.get_playback_position()
@@ -51,9 +53,7 @@ func _process(_delta):
 	var orb_velocity = (Global.game_speed*100)/1
 	var orb_arrival_time = song_position + spawn_to_target_distance/orb_velocity
 
-	if $MusicPlayer.get_playback_position() == $MusicPlayer.stream.get_length():
-		end_game()
-	elif level_data["orbs"] and orb_arrival_time >= level_data["orbs"][0][0]:
+	if level_data["orbs"] and orb_arrival_time >= level_data["orbs"][0][0]:
 		var spawn = chord_spawns[level_data["orbs"][0][1]]
 		var orb = get_random_chord_orb()
 		spawn.add_child(orb)
@@ -61,7 +61,8 @@ func _process(_delta):
 
 func end_game():
 	LeaderboardApi.end_session(score)
-	get_tree().quit()
+	yield(LeaderboardApi.http, "request_completed")
+	emit_signal("game_finished", score)
 
 func get_random_chord_orb() -> ChordOrb:
 	var chord_orb = chord_orb_scene.instance()
@@ -86,7 +87,7 @@ func _on_chord_hit(chord, good_hit):
 func _on_redundant_input(): 
 	set_score(score - 25)
 
-func _on_chord_missed(chord):
+func _on_chord_missed(_chord):
 	set_score(score - 5)
 
 func _on_DeathZone_area_entered(area):

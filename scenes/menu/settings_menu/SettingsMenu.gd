@@ -18,7 +18,7 @@ func _on_MuteCheckBox_pressed():
 func _on_BackButton_pressed():
 	emit_signal("back")
 
-func _on_MasterVolumeSlider_drag_ended(value_changed):
+func _on_MasterVolumeSlider_drag_ended(_value_changed):
 	settings.sets("master_volume_db", $VBoxContainer/MasterVolumeSlider.value)
 	update_ui()
 

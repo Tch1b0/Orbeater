@@ -54,5 +54,10 @@ func _on_ScoreDiffTimer_timeout():
 	$HUD/ScoreDiffLabel.hide()
 
 func _on_GameController_game_finished(score):
-	LeaderboardApi.end_session(score)
+	$HUD/BlurTexture.show()
+	$HUD/EndingScreen.show()
+	$HUD/EndingScreen/ScoreLabel.text = "Your Score: %d" % score
+	$HUD/EndingScreen/Leaderboard.update_all()
+
+func _on_MenuButton_pressed():
 	_on_PauseMenu_go_home()

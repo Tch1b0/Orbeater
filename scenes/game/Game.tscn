@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://components/game_controller/GameController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/audio/bopp.mp3" type="AudioStream" id=9]
 [ext_resource path="res://assets/audio/thelostwalkmanhit.mp3" type="AudioStream" id=10]
 [ext_resource path="res://assets/audio/tick.mp3" type="AudioStream" id=11]
+[ext_resource path="res://components/leaderboard/Leaderboard.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0.21365, 0.261128, 0.391691, 0.409496 )
@@ -149,6 +150,26 @@ gradient = SubResource( 12 )
 size = 240
 extra_spacing_bottom = 15
 font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFontData" id=41]
+font_path = "res://assets/special/ConcertOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=42]
+size = 52
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = 9
+font_data = SubResource( 41 )
+
+[sub_resource type="DynamicFont" id=43]
+size = 23
+extra_spacing_bottom = 9
+font_data = SubResource( 41 )
+
+[sub_resource type="DynamicFont" id=44]
+size = 23
+extra_spacing_bottom = 9
+font_data = SubResource( 41 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 8 )
@@ -319,9 +340,50 @@ visible = false
 wait_time = 3.0
 one_shot = true
 
+[node name="EndingScreen" type="Control" parent="HUD"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="HUD/EndingScreen"]
+margin_top = 35.0
+margin_right = 1023.0
+margin_bottom = 138.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 42 )
+text = "Level Complete!"
+align = 1
+valign = 1
+
+[node name="Leaderboard" parent="HUD/EndingScreen" instance=ExtResource( 12 )]
+margin_left = 11.0
+margin_top = 76.0
+margin_right = 11.0
+margin_bottom = 76.0
+
+[node name="MenuButton" type="Button" parent="HUD/EndingScreen"]
+margin_left = 19.0
+margin_top = 550.0
+margin_right = 157.0
+margin_bottom = 584.0
+custom_fonts/font = SubResource( 43 )
+text = "GO TO MENU"
+
+[node name="ScoreLabel" type="Label" parent="HUD/EndingScreen"]
+margin_left = 326.0
+margin_top = 536.0
+margin_right = 720.0
+margin_bottom = 564.0
+custom_fonts/font = SubResource( 44 )
+text = "Your Score: "
+align = 1
+
 [connection signal="game_finished" from="GameController" to="." method="_on_GameController_game_finished"]
 [connection signal="score_updated" from="GameController" to="." method="_on_GameController_score_updated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="close_menu" from="HUD/PauseMenu" to="." method="_on_PauseMenu_close_menu"]
 [connection signal="go_home" from="HUD/PauseMenu" to="." method="_on_PauseMenu_go_home"]
 [connection signal="timeout" from="HUD/ScoreDiffTimer" to="." method="_on_ScoreDiffTimer_timeout"]
+[connection signal="pressed" from="HUD/EndingScreen/MenuButton" to="." method="_on_MenuButton_pressed"]

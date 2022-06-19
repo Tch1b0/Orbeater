@@ -2,7 +2,15 @@ extends Node
 
 var metas: Dictionary setget , get_metas
 var level_datas: Dictionary
-var selected_level_name: String = "Pulse"
+var selected_level_name: String = "Pulse" setget set_selected_level_name
+
+func set_selected_level_name(name: String):
+	selected_level_name = name
+	var difficulty = get_metas()[name]["difficulty"]
+	match difficulty:
+		"EASY": Global.game_speed = 3
+		"NORMAL": Global.game_speed = 4
+		"HARD": Global.game_speed = 5
 
 func get_metas() -> Dictionary:
 	if not len(metas.keys()):

@@ -17,6 +17,7 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept") and $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "intro":
+		_on_AnimationPlayer_animation_finished("intro")
 		$AnimationPlayer.play("RESET")
 
 func _on_AnimationPlayer_animation_finished(anim_name: String):
@@ -29,8 +30,13 @@ func _on_AnimationPlayer_animation_finished(anim_name: String):
 		$RegisterBox.show()
 
 func _on_SelectLevelButton_pressed():
+	if not LeaderboardApi.user_token: return
 	$MainMenu.hide()
 	$LevelSelection.show()
+
+func _on_TutorialButton_pressed():
+	$MainMenu.hide()
+	$Tutorial.show()
 
 func _on_SettingsButton_pressed():
 	$MainMenu.hide()
@@ -44,6 +50,7 @@ func _on_back():
 
 	$LevelSelection.hide()
 	$SettingsMenu.hide()
+	$Tutorial.hide()
 	$MainMenu.show()
 
 func _on_LevelSelection_switch_scene(scene_path):
@@ -59,3 +66,4 @@ func _on_LevelEditorButton_pressed():
 
 func _on_RegisterBox_finished():
 	$RegisterBox.hide()
+

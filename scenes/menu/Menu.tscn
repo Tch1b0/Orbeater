@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/special/ConcertOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/visual/NightSky.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/menu/settings_menu/SettingsMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/menu/level_selection/LevelSelection.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/register_box/RegisterBox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/tutorial/Tutorial.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 82
@@ -94,7 +95,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 662, 313 ) ]
+"values": [ Vector2( 680, 425 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("MainMenu:modulate")
@@ -281,7 +282,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 6.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1207, 204 ), Vector2( 662, 313 ) ]
+"values": [ Vector2( 1207, 204 ), Vector2( 680, 425 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("MainMenu:modulate")
@@ -400,10 +401,18 @@ margin_bottom = 47.0
 custom_fonts/font = SubResource( 2 )
 text = "SELECT LEVEL"
 
-[node name="LevelEditorButton" type="Button" parent="MainMenu/VBoxContainer"]
+[node name="TutorialButton" type="Button" parent="MainMenu/VBoxContainer"]
 margin_top = 51.0
 margin_right = 193.0
 margin_bottom = 98.0
+custom_fonts/font = SubResource( 2 )
+text = "TUTORIAL"
+
+[node name="LevelEditorButton" type="Button" parent="MainMenu/VBoxContainer"]
+visible = false
+margin_top = 102.0
+margin_right = 193.0
+margin_bottom = 149.0
 custom_fonts/font = SubResource( 2 )
 text = "EDIT LEVEL"
 
@@ -420,14 +429,6 @@ margin_right = 193.0
 margin_bottom = 200.0
 custom_fonts/font = SubResource( 2 )
 text = "EXIT"
-
-[node name="LevelSelection" parent="." instance=ExtResource( 7 )]
-visible = false
-margin_right = -1024.0
-margin_bottom = -600.0
-
-[node name="SettingsMenu" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [node name="Orbs" type="Node2D" parent="."]
 __meta__ = {
@@ -451,7 +452,7 @@ color = Color( 0.686275, 0.0901961, 0.752941, 1 )
 display_dot = false
 
 [node name="Orb4" parent="Orbs" instance=ExtResource( 4 )]
-position = Vector2( 662, 313 )
+position = Vector2( 680, 425 )
 color = Color( 0.87451, 0.831373, 0.145098, 1 )
 display_dot = false
 
@@ -464,6 +465,17 @@ display_dot = false
 position = Vector2( 913, 312 )
 color = Color( 0.686275, 0.0901961, 0.752941, 1 )
 display_dot = false
+
+[node name="LevelSelection" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_right = -1024.0
+margin_bottom = -600.0
+
+[node name="Tutorial" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -493,11 +505,13 @@ uppercase = true
 visible = false
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/SelectLevelButton" to="." method="_on_SelectLevelButton_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/LevelEditorButton" to="." method="_on_LevelEditorButton_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="back" from="LevelSelection" to="." method="_on_back"]
 [connection signal="switch_scene" from="LevelSelection" to="." method="_on_LevelSelection_switch_scene"]
+[connection signal="back" from="Tutorial" to="." method="_on_back"]
 [connection signal="back" from="SettingsMenu" to="." method="_on_back"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="finished" from="RegisterBox" to="." method="_on_RegisterBox_finished"]
