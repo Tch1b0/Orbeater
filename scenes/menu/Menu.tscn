@@ -35,7 +35,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 231, 395 ) ]
+"values": [ Vector2( 169, 455 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Orbs/Orb2:position")
@@ -222,7 +222,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 7.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -137, 419 ), Vector2( 231, 395 ) ]
+"values": [ Vector2( -137, 419 ), Vector2( 169, 455 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Orbs/Orb2:position")
@@ -372,7 +372,7 @@ __meta__ = {
 margin_left = -1.0
 margin_top = 48.0
 margin_right = 1017.0
-margin_bottom = 170.0
+margin_bottom = 543.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "ORBEATER"
@@ -381,6 +381,7 @@ valign = 1
 uppercase = true
 
 [node name="MainMenu" type="CenterContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_top = 275.0
 margin_right = 1022.0
 margin_bottom = 599.0
@@ -390,6 +391,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+visible = false
 margin_left = 414.0
 margin_top = 62.0
 margin_right = 607.0
@@ -431,38 +433,34 @@ custom_fonts/font = SubResource( 2 )
 text = "EXIT"
 
 [node name="Orbs" type="Node2D" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="Orb1" parent="Orbs" instance=ExtResource( 4 )]
-position = Vector2( 231, 395 )
+position = Vector2( -137, 419 )
 color = Color( 0.87451, 0.831373, 0.145098, 1 )
 display_dot = false
 
 [node name="Orb2" parent="Orbs" instance=ExtResource( 4 )]
-position = Vector2( 92, 323 )
+position = Vector2( -155, 299 )
 color = Color( 0.0980392, 0.792157, 0.321569, 1 )
 display_dot = false
 
 [node name="Orb3" parent="Orbs" instance=ExtResource( 4 )]
-position = Vector2( 70, 513 )
+position = Vector2( -196, 537 )
 color = Color( 0.686275, 0.0901961, 0.752941, 1 )
 display_dot = false
 
 [node name="Orb4" parent="Orbs" instance=ExtResource( 4 )]
-position = Vector2( 680, 425 )
+position = Vector2( 1207, 204 )
 color = Color( 0.87451, 0.831373, 0.145098, 1 )
 display_dot = false
 
 [node name="Orb5" parent="Orbs" instance=ExtResource( 4 )]
-position = Vector2( 844, 492 )
+position = Vector2( 1200, 600 )
 color = Color( 0.0980392, 0.792157, 0.321569, 1 )
 display_dot = false
 
 [node name="Orb6" parent="Orbs" instance=ExtResource( 4 )]
-position = Vector2( 913, 312 )
+position = Vector2( 1340, 259 )
 color = Color( 0.686275, 0.0901961, 0.752941, 1 )
 display_dot = false
 
@@ -483,13 +481,13 @@ volume_db = -10.0
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
 method_call_mode = 1
 anims/RESET = SubResource( 4 )
 anims/fade_out = SubResource( 5 )
 anims/intro = SubResource( 3 )
 
 [node name="SkipLabel" type="Label" parent="."]
-visible = false
 margin_left = 812.0
 margin_top = 567.0
 margin_right = 1019.0

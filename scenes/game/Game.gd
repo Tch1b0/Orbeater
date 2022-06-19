@@ -17,7 +17,7 @@ func toggle_pause():
 
 func _process(_delta):
 	$ProgressBar.value = $GameController.song_position
-	if Input.is_action_just_pressed("escape") and $AnimationPlayer.current_animation != "intro":
+	if Input.is_action_just_pressed("escape") and $AnimationPlayer.current_animation != "intro" and not $GameController.game_ended:
 		toggle_pause()
 
 func _on_GameController_score_updated(new_score):

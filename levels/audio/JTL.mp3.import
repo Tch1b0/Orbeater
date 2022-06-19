@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/JTL.mp3-428347288700780b98b74c4881a52f07.mp3str"
+
+[deps]
+
+source_file="res://levels/audio/JTL.mp3"
+dest_files=[ "res://.import/JTL.mp3-428347288700780b98b74c4881a52f07.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -5,11 +5,17 @@
         "difficulty": "EASY",
         "level-data": "res://levels/level_data/Egypt.json"
     },
-    "MDHK": {
-        "artist": "Noisetäter feat. Narkoleptikk",
+    "JTL": {
+        "artist": "Noisetäter",
+        "cover": "res://levels/images/JTL.jpg",
+        "difficulty": "EASY",
+        "level-data": "res://levels/level_data/JTL.json"
+    },
+    "Excited": {
+        "artist": "Noisetäter",
         "cover": "res://levels/images/Machdashauskaputt.jpg",
         "difficulty": "NORMAL",
-        "level-data": "res://levels/level_data/Machdashauskaputt.json"
+        "level-data": "res://levels/level_data/Excited.json"
     },
     "Sangria": {
         "artist": "Noisetäter feat. Prince M",
@@ -22,5 +28,11 @@
         "cover": "res://levels/images/Pulse.jpg",
         "difficulty": "HARD",
         "level-data": "res://levels/level_data/Pulse.json"
+    },
+    "Nightshift": {
+        "artist": "Noisetäter",
+        "cover": "res://levels/images/Machdashauskaputt.jpg",
+        "difficulty": "HARD",
+        "level-data": "res://levels/level_data/Nightshift.json"
     }
 }

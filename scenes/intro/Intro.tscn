@@ -329,7 +329,7 @@ margin_bottom = 40.0
 position = Vector2( 508, 282 )
 scale = Vector2( 15, 15 )
 frames = SubResource( 34 )
-frame = 14
+frame = 17
 playing = true
 
 [node name="Background" type="TextureRect" parent="Items/MadeBy"]

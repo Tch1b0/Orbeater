@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Nightshift.mp3-cdfada5c3bac1a400570002d5d36e47a.mp3str"
+
+[deps]
+
+source_file="res://levels/audio/Nightshift.mp3"
+dest_files=[ "res://.import/Nightshift.mp3-cdfada5c3bac1a400570002d5d36e47a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

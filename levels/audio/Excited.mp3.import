@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Excited.mp3-50612f72ccaae58f0a6eadbab5e57170.mp3str"
+
+[deps]
+
+source_file="res://levels/audio/Excited.mp3"
+dest_files=[ "res://.import/Excited.mp3-50612f72ccaae58f0a6eadbab5e57170.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

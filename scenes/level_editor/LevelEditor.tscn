@@ -112,13 +112,6 @@ margin_bottom = 232.0
 custom_fonts/font = SubResource( 2 )
 text = "PLAY/STOP"
 
-[node name="GenerateButton" type="Button" parent="VBoxContainer"]
-margin_top = 236.0
-margin_right = 266.0
-margin_bottom = 270.0
-custom_fonts/font = SubResource( 2 )
-text = "GENERATE"
-
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
 
